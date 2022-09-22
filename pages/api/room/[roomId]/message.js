@@ -14,7 +14,7 @@ export default function roomIdMessageRoute(req, res) {
         messageId: x.messageId,
         text: x.text,
       }));
-      return res.json({ ok: true, messages: result });
+      return res.json({ ok: true, messages: result, idx: roomIdx });
     }
   } else if (req.method === "POST") {
     const rooms = readDB();

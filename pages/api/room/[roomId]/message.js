@@ -6,10 +6,9 @@ export default function roomIdMessageRoute(req, res) {
     const rooms = readDB();
     const id = req.query.roomId;
     const roomIdx = rooms.findIndex((x) => x.roomId === id);
-    const rmessages = rooms[roomIdx].messages;
     if (roomIdx === -1)
       return res.status(404).json({ ok: false, message: "Invalid room id" });
-    else return res.json({ ok: true, messages: rmessages });
+    else return res.json({ ok: true, messages: rooms[roomIdx].messages });
   } else if (req.method === "POST") {
     const rooms = readDB();
 
